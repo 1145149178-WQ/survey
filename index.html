@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中小学生心理健康状况普查表</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317395C'/%3E%3Cpath d='M19 5 L9 18h6l-2 9 10-13h-6z' fill='%23F2E7D3'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FBFAF5;
+  --ink:#17202A;
+  --blue:#17395C;
+  --red:#B23A2B;
+  --line:#D9D3C4;
+  --mute:#6C675C;
+  --grey:#EFEBDF;
+  --warm:#F6ECD9;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:#E7E2D5;
+  background-image:radial-gradient(rgba(23,32,42,.045) 1px,transparent 1px);
+  background-size:4px 4px;
+  color:var(--ink);
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif;
+  font-size:16px;
+  line-height:1.7;
+}
+.sheet{
+  position:relative;
+  max-width:840px;
+  margin:0 auto;
+  background:var(--paper);
+  border:1px solid #DED8C7;
+  border-top:0;
+  box-shadow:0 24px 48px -28px rgba(23,32,42,.4);
+  padding:26px 18px 150px;
+}
+@media (min-width:768px){
+  .sheet{margin:28px auto 40px;padding:46px 54px 130px}
+}
+
+/* 装订线 */
+.sheet::before{
+  content:"";
+  position:absolute;top:0;bottom:0;left:26px;
+  border-left:1px dashed #E2DCCB;
+  pointer-events:none;
+}
+@media (min-width:768px){
+  .sheet::before{left:34px}
+}
+
+/* ===== 报头 ===== */
+.masthead{position:relative;padding-bottom:22px;border-bottom:2px solid var(--ink)}
+.mast-top{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-size:12px;letter-spacing:.18em;color:var(--mute);
+  border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:18px;
+}
+.mast-top span:last-child{letter-spacing:.08em}
+h1{
+  margin:0;
+  font-family:"Songti SC","SimSun","Source Han Serif SC",serif;
+  font-weight:700;
+  font-size:31px;
+  line-height:1.25;
+  letter-spacing:.04em;
+}
+h1 .thin{display:block;font-size:15px;font-weight:400;letter-spacing:.32em;color:var(--mute);margin-top:10px;font-family:"Microsoft YaHei",sans-serif;text-transform:uppercase}
+.mast-meta{
+  margin-top:16px;
+  font-size:13px;color:var(--mute);
+  display:flex;flex-wrap:wrap;gap:4px 14px;
+}
+.notice{
+  margin-top:18px;
+  background:var(--warm);
+  border-left:3px solid var(--red);
+  padding:12px 14px;
+  font-size:14px;
+  line-height:1.65;
+}
+.notice b{color:var(--red)}
+.stamp{
+  position:absolute;right:12px;top:0;
+  width:86px;height:86px;
+  border:2px solid var(--red);
+  border-radius:50%;
+  color:var(--red);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:"Songti SC","SimSun",serif;
+  transform:rotate(-12deg);
+  opacity:.55;
+  font-size:17px;font-weight:700;letter-spacing:.04em;
+  line-height:1.2;
+  white-space:nowrap;
+  text-align:center;
+}
+.stamp i{display:none}
+@media (min-width:521px){
+  .mast-top{padding-right:104px}
+}
+@media (max-width:520px){
+  .stamp{
+    position:static;
+    display:flex;
+    width:82px;height:82px;
+    font-size:12px;
+    letter-spacing:.02em;
+    white-space:nowrap;
+    opacity:.6;
+    transform:rotate(-10deg);
+    margin:12px 2px 0 auto;
+  }
+  .stamp i{display:none}
+}
+
+/* ===== 章节 ===== */
+.sec-head{
+  margin:38px 0 6px;
+  display:flex;align-items:baseline;gap:10px;
+}
+.sec-head h2{
+  margin:0;
+  font-family:"Songti SC","SimSun",serif;
+  font-size:20px;letter-spacing:.06em;
+}
+.sec-head .cnt{font-size:12px;color:var(--mute);letter-spacing:.06em}
+.sec-lede{
+  margin:0 0 6px;
+  font-size:13.5px;color:var(--mute);
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+  line-height:1.7;
+}
+
+/* ===== 题目 ===== */
+.q{margin-top:26px}
+.q.flash{background:#FBEFEA;box-shadow:0 0 0 9px #FBEFEA;transition:background .2s ease, box-shadow .2s ease}
+.qt{
+  margin:0 0 12px;
+  font-size:15.5px;font-weight:400;
+  line-height:1.6;
+  display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
+}
+.qno{
+  font-family:"Songti SC","SimSun",serif;
+  font-size:13px;color:var(--red);font-weight:700;
+  letter-spacing:.06em;flex:0 0 auto;
+  min-width:26px;
+}
+.tag{
+  font-size:11.5px;color:var(--blue);
+  border:1px solid rgba(23,57,92,.35);
+  padding:1px 7px;border-radius:2px;
+  letter-spacing:.05em;flex:0 0 auto;
+}
+.qt::after{
+  content:"*";
+  color:var(--red);
+  font-size:14px;line-height:1;
+  flex:0 0 auto;
+  transform:translateY(1px);
+}
+.q[data-type="text"] .qt::after{content:none}
+
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{
+  position:relative;
+  display:flex;align-items:center;
+  width:100%;
+  min-height:44px;
+  padding:8px 14px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:14.5px;line-height:1.45;
+  cursor:pointer;
+  color:var(--ink);
+  transition:border-color .12s, background .12s;
+}
+.opt input{
+  position:absolute;opacity:0;width:1px;height:1px;margin:0;
+  pointer-events:none;
+}
+.box{
+  width:13px;height:13px;flex:0 0 auto;
+  border:1px solid #B4AE9E;
+  margin-right:9px;
+  background:#fff;
+  transition:background .12s,border-color .12s;
+}
+.opt:hover{border-color:#A9A192;background:#FDFCF8}
+.opt:has(input:checked){
+  border-color:var(--red);
+  background:#FCEFEA;
+  color:#7C2518;
+}
+.opt input:checked + .box{
+  background:var(--red);border-color:var(--red);
+  box-shadow:inset 0 0 0 2px #fff;
+}
+.opt:has(input:focus-visible){outline:2px solid var(--blue);outline-offset:2px}
+.opt .txt{white-space:normal;min-width:0}
+.opt-letter{
+  flex:0 0 20px;
+  font-family:"Songti SC","SimSun",serif;
+  font-size:13.5px;color:var(--mute);
+  letter-spacing:.02em;
+}
+.other-note{margin-top:8px}
+.other-note[hidden]{display:none}
+
+.linkbtn{
+  margin-top:10px;
+  background:none;border:0;border-bottom:1px solid var(--mute);
+  color:var(--mute);font-size:13px;font-family:inherit;
+  padding:0 0 2px;min-height:32px;cursor:pointer;
+}
+.linkbtn:hover{color:var(--red);border-bottom-color:var(--red)}
+.opts.is-collapsed .opt.extra{display:none}
+
+/* 滑块 */
+.range-wrap{margin-top:4px}
+.range{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:6px;background:var(--line);
+  outline:none;margin:22px 0 10px;accent-color:var(--red);
+}
+.range::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--red);border:3px solid #fff;
+  box-shadow:0 0 0 1px var(--red);cursor:pointer;
+}
+.range::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--red);border:3px solid #fff;box-shadow:0 0 0 1px var(--red);cursor:pointer;
+}
+.range-legend{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--mute);
+}
+.range-val{
+  font-family:"Songti SC","SimSun",serif;
+  font-size:26px;color:var(--red);line-height:1;
+}
+.range-val small{font-size:12px;color:var(--mute);font-family:"Microsoft YaHei",sans-serif;margin-left:3px}
+
+/* 填空 */
+.fill{display:block;margin-top:2px}
+.fill input{
+  width:100%;
+  font-family:inherit;font-size:16px;color:var(--ink);
+  padding:11px 12px;
+  border:1px solid var(--line);background:#fff;
+  border-radius:0;
+}
+.fill input::placeholder{color:#A9A293}
+.fill input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.hint{font-size:12.5px;color:var(--mute);margin-top:6px}
+
+/* ===== 底部提交条 ===== */
+.bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  background:rgba(251,250,245,.96);
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(6px);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+}
+.bar-inner{
+  max-width:840px;margin:0 auto;
+  display:flex;align-items:center;gap:14px;
+}
+.progress{flex:1 1 auto;min-width:0}
+.progress-top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute);margin-bottom:5px}
+.track{height:5px;background:var(--grey);position:relative;overflow:hidden}
+.track i{position:absolute;inset:0 auto 0 0;width:0;background:var(--red);transition:width .25s}
+.btn{
+  flex:0 0 auto;
+  font-family:inherit;font-size:15px;
+  padding:12px 26px;min-height:48px;
+  background:var(--blue);color:#F7F5EE;
+  border:1px solid var(--blue);
+  border-radius:0;cursor:pointer;
+  letter-spacing:.1em;
+}
+.btn:hover{background:#102B45}
+.btn:disabled{opacity:.55;cursor:default}
+.ghost{
+  background:transparent;color:var(--blue);
+  border:1px solid rgba(23,57,92,.45);
+  letter-spacing:.06em;padding:11px 18px;min-height:46px;
+}
+.ghost:hover{background:rgba(23,57,92,.06);color:var(--blue)}
+.warnline{font-size:12.5px;color:var(--red);margin-top:6px;display:none}
+
+/* ===== 结果 ===== */
+.result{display:none;padding-top:8px}
+#result{padding-bottom:56px}
+.result.show{display:block;animation:rise .32s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.result.show{animation:none}}
+
+.result-head{
+  margin-top:26px;padding-bottom:18px;
+  border-bottom:2px solid var(--ink);
+  position:relative;
+}
+.result-kicker{font-size:12px;letter-spacing:.2em;color:var(--mute);margin:0 0 10px}
+.result-head h2{
+  margin:0;font-family:"Songti SC","SimSun",serif;
+  font-size:27px;letter-spacing:.03em;line-height:1.3;
+}
+.result-id{font-size:12.5px;color:var(--mute);margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+.seal{
+  position:absolute;right:0;top:-6px;
+  border:2px solid var(--red);color:var(--red);
+  padding:6px 8px;
+  font-family:"Songti SC","SimSun",serif;font-size:17px;font-weight:700;
+  letter-spacing:.14em;transform:rotate(-8deg);opacity:.75;
+  border-radius:3px;
+}
+@media (max-width:520px){.seal{position:static;display:inline-block;margin-top:14px;font-size:15px;transform:none}}
+
+.result-body{margin-top:22px}
+.diag{
+  background:#fff;border:1px solid var(--line);
+  padding:18px 16px;
+}
+.diag .label{font-size:12px;letter-spacing:.18em;color:var(--mute);margin:0 0 8px}
+.diag h3{
+  margin:0 0 8px;font-family:"Songti SC","SimSun",serif;
+  font-size:22px;color:var(--red);letter-spacing:.04em;font-weight:700;
+}
+.diag p{margin:0;font-size:14.5px;line-height:1.75;color:#3A3F46}
+
+.thunder{margin-top:20px}
+.thunder-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mute)}
+.thunder-top b{font-family:"Songti SC","SimSun",serif;font-size:24px;color:var(--ink);font-weight:700}
+.thunder-track{height:10px;background:var(--grey);margin-top:8px;position:relative}
+.thunder-track i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#C98A46,var(--red));width:0;transition:width .6s ease-out}
+
+.echo{
+  margin-top:20px;border-left:3px solid var(--line);
+  padding:2px 0 2px 14px;
+  font-size:14px;color:#3A3F46;
+}
+.echo .k{display:block;font-size:12px;letter-spacing:.12em;color:var(--mute);margin-bottom:4px}
+.echo .v{font-family:"Songti SC","SimSun",serif;font-size:16px;color:var(--ink);white-space:pre-wrap}
+
+.advice{
+  margin-top:22px;background:var(--warm);padding:16px;
+  font-size:14px;line-height:1.8;
+}
+.advice .k{font-size:12px;letter-spacing:.16em;color:var(--mute);display:block;margin-bottom:6px}
+
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+
+.foot{
+  margin-top:46px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--mute);line-height:1.8;
+}
+.foot b{color:var(--ink);font-weight:400}
+
+.toast{
+  position:fixed;left:50%;bottom:96px;transform:translate(-50%,10px);
+  background:var(--ink);color:#F7F5EE;font-size:13.5px;
+  padding:10px 18px;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;z-index:40;
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ===== 报头 ===== -->
+  <header class="masthead">
+    <div class="stamp">学校专用</div>
+    <div class="mast-top">
+      <span>学生心理状况调研项目组</span>
+      <span>FORM 06 / 2026</span>
+    </div>
+    <h1>中小学生心理健康状况普查
+      <span class="thin">Mental Health Survey</span>
+    </h1>
+    <div class="mast-meta">
+      <span>编号 XL-2026-1114</span>
+      <span>共 12 题</span>
+      <span>用时约 3 分钟</span>
+      <span>保密级别：仅限本人查阅</span>
+    </div>
+    <div class="notice">
+      <b>为全面了解学生的心理状况与在校生活状态，特开展本次普查。</b>
+      问卷采用匿名方式，结果仅用于整体情况汇总，不计入任何评价，请按最近两周的真实感受作答。
+    </div>
+  </header>
+
+  <!-- ===== 一、基本信息 ===== -->
+  <div class="sec-head">
+    <h2>一、基本信息</h2>
+    <span class="cnt">第 01—03 题</span>
+  </div>
+  <p class="sec-lede">以下信息仅用于统计样本结构，不作为任何评价依据。带 <span style="color:var(--red)">*</span> 为必答项。</p>
+
+  <article class="q" data-q="q1" data-type="single">
+    <h3 class="qt"><span class="qno">01</span>您的性别<span class="tag">单选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="q1" value="男性" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">男性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="女性" data-p="0"><span class="box"></span><span class="opt-letter">B</span><span class="txt">女性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="双性" data-p="2"><span class="box"></span><span class="opt-letter">C</span><span class="txt">双性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="跨性" data-p="2"><span class="box"></span><span class="opt-letter">D</span><span class="txt">跨性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="变性" data-p="2"><span class="box"></span><span class="opt-letter">E</span><span class="txt">变性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="无性" data-p="2"><span class="box"></span><span class="opt-letter">F</span><span class="txt">无性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="流性" data-p="2"><span class="box"></span><span class="opt-letter">G</span><span class="txt">流性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="顺性" data-p="2"><span class="box"></span><span class="opt-letter">H</span><span class="txt">顺性</span></label>
+      <label class="opt"><input type="radio" name="q1" value="不知道" data-p="2"><span class="box"></span><span class="opt-letter">I</span><span class="txt">不知道</span></label>
+      <label class="opt"><input type="radio" name="q1" value="微生物" data-p="3"><span class="box"></span><span class="opt-letter">J</span><span class="txt">微生物</span></label>
+      <label class="opt"><input type="radio" name="q1" value="草履虫" data-p="4"><span class="box"></span><span class="opt-letter">K</span><span class="txt">草履虫</span></label>
+      <label class="opt"><input type="radio" name="q1" value="doge" data-p="3"><span class="box"></span><span class="opt-letter">L</span><span class="txt">doge</span></label>
+      <label class="opt"><input type="radio" name="q1" value="外星人" data-p="4"><span class="box"></span><span class="opt-letter">M</span><span class="txt">外星人</span></label>
+      <label class="opt"><input type="radio" name="q1" value="沃尔玛购物袋" data-p="4"><span class="box"></span><span class="opt-letter">N</span><span class="txt">沃尔玛购物袋</span></label>
+      <label class="opt"><input type="radio" name="q1" value="屎" data-p="5"><span class="box"></span><span class="opt-letter">O</span><span class="txt">屎</span></label>
+      <label class="opt"><input type="radio" name="q1" value="其它" data-other="q1" data-p="2"><span class="box"></span><span class="txt">其它</span></label>
+    </div>
+    <div class="other-note" id="q1Other" hidden>
+      <label class="fill"><input type="text" id="q1OtherText" maxlength="24" placeholder="请输入其它内容"></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q2" data-type="single">
+    <h3 class="qt"><span class="qno">02</span>你是哪国人<span class="tag">单选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="q2" value="中华人民共和国" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">中华人民共和国</span></label>
+      <label class="opt"><input type="radio" name="q2" value="美利卡合众国" data-p="2"><span class="box"></span><span class="opt-letter">B</span><span class="txt">美利卡合众国</span></label>
+      <label class="opt"><input type="radio" name="q2" value="德意志联邦共和国" data-p="2"><span class="box"></span><span class="opt-letter">C</span><span class="txt">德意志联邦共和国</span></label>
+      <label class="opt"><input type="radio" name="q2" value="法兰西" data-p="2"><span class="box"></span><span class="opt-letter">D</span><span class="txt">法兰西</span></label>
+      <label class="opt"><input type="radio" name="q2" value="大不列颠及北爱尔兰联合王国" data-p="2"><span class="box"></span><span class="opt-letter">E</span><span class="txt">大不列颠及北爱尔兰联合王国</span></label>
+      <label class="opt"><input type="radio" name="q2" value="俄罗斯" data-p="2"><span class="box"></span><span class="opt-letter">F</span><span class="txt">俄罗斯</span></label>
+      <label class="opt"><input type="radio" name="q2" value="卡塔尔" data-p="3"><span class="box"></span><span class="opt-letter">G</span><span class="txt">卡塔尔</span></label>
+      <label class="opt"><input type="radio" name="q2" value="日本国" data-p="2"><span class="box"></span><span class="opt-letter">H</span><span class="txt">日本国</span></label>
+      <label class="opt"><input type="radio" name="q2" value="乌克兰居民" data-p="3"><span class="box"></span><span class="opt-letter">I</span><span class="txt">乌克兰居民</span></label>
+      <label class="opt"><input type="radio" name="q2" value="意呆利" data-p="3"><span class="box"></span><span class="opt-letter">J</span><span class="txt">意呆利</span></label>
+      <label class="opt"><input type="radio" name="q2" value="其它" data-other="q2" data-p="2"><span class="box"></span><span class="txt">其它</span></label>
+    </div>
+    <div class="other-note" id="q2Other" hidden>
+      <label class="fill"><input type="text" id="q2OtherText" maxlength="24" placeholder="请输入其它内容"></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q3" data-type="single">
+    <h3 class="qt"><span class="qno">03</span>你姓<span class="tag">单选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="q3" value="王" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">王</span></label>
+      <label class="opt"><input type="radio" name="q3" value="李" data-p="0"><span class="box"></span><span class="opt-letter">B</span><span class="txt">李</span></label>
+      <label class="opt"><input type="radio" name="q3" value="张" data-p="0"><span class="box"></span><span class="opt-letter">C</span><span class="txt">张</span></label>
+      <label class="opt"><input type="radio" name="q3" value="卓" data-p="0"><span class="box"></span><span class="opt-letter">D</span><span class="txt">卓</span></label>
+      <label class="opt"><input type="radio" name="q3" value="黄" data-p="0"><span class="box"></span><span class="opt-letter">E</span><span class="txt">黄</span></label>
+      <label class="opt"><input type="radio" name="q3" value="汤" data-p="0"><span class="box"></span><span class="opt-letter">F</span><span class="txt">汤</span></label>
+      <label class="opt"><input type="radio" name="q3" value="温" data-p="0"><span class="box"></span><span class="opt-letter">G</span><span class="txt">温</span></label>
+      <label class="opt"><input type="radio" name="q3" value="司马" data-p="0"><span class="box"></span><span class="opt-letter">H</span><span class="txt">司马</span></label>
+      <label class="opt"><input type="radio" name="q3" value="郑" data-p="0"><span class="box"></span><span class="opt-letter">I</span><span class="txt">郑</span></label>
+      <label class="opt"><input type="radio" name="q3" value="其它" data-other="q3" data-p="0"><span class="box"></span><span class="txt">其它</span></label>
+    </div>
+    <div class="other-note" id="q3Other" hidden>
+      <label class="fill"><input type="text" id="q3OtherText" maxlength="24" placeholder="请输入其它内容"></label>
+    </div>
+  </article>
+
+  <!-- ===== 二、在校情况 ===== -->
+  <div class="sec-head">
+    <h2>二、在校情况</h2>
+    <span class="cnt">第 04—06 题</span>
+  </div>
+  <p class="sec-lede">本部分记录你在学校里的日常状态，请按最近一个月的情况作答，可多选的题目不限项数。</p>
+
+  <article class="q" data-q="q4" data-type="multi">
+    <h3 class="qt"><span class="qno">04</span>你去学校的目的是<span class="tag">多选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q4" value="学习" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">学习</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="抄袭" data-p="2"><span class="box"></span><span class="opt-letter">B</span><span class="txt">抄袭</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="不知道" data-p="2"><span class="box"></span><span class="opt-letter">C</span><span class="txt">不知道</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="干饭" data-p="0"><span class="box"></span><span class="opt-letter">D</span><span class="txt">干饭</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="微生物不用上学" data-p="3"><span class="box"></span><span class="opt-letter">E</span><span class="txt">微生物不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="草履虫不用上学" data-p="4"><span class="box"></span><span class="opt-letter">F</span><span class="txt">草履虫不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="屎不用上学" data-p="4"><span class="box"></span><span class="opt-letter">G</span><span class="txt">屎不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="和老师打架" data-p="3"><span class="box"></span><span class="opt-letter">H</span><span class="txt">和老师打架</span></label>
+      <label class="opt"><input type="checkbox" name="q4" value="吃同学" data-p="5"><span class="box"></span><span class="opt-letter">I</span><span class="txt">吃同学</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q5" data-type="multi" data-max="2">
+    <h3 class="qt"><span class="qno">05</span>你一般穿什么服装去学校<span class="tag">双选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q5" value="校服（包括普通校服、女装校服、西装校服）" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">校服（包括普通校服、女装校服、西装校服）</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="性感黑丝" data-p="3"><span class="box"></span><span class="opt-letter">B</span><span class="txt">性感黑丝</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="裸体" data-p="4"><span class="box"></span><span class="opt-letter">C</span><span class="txt">裸体</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="蓝色妖姬" data-p="3"><span class="box"></span><span class="opt-letter">D</span><span class="txt">蓝色妖姬</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="我是微生物不用上学" data-p="3"><span class="box"></span><span class="opt-letter">E</span><span class="txt">我是微生物不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="我是草履虫不用上学" data-p="4"><span class="box"></span><span class="opt-letter">F</span><span class="txt">我是草履虫不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q5" value="我是屎不用上学" data-p="5"><span class="box"></span><span class="opt-letter">G</span><span class="txt">我是屎不用上学</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q6" data-type="multi">
+    <h3 class="qt"><span class="qno">06</span>你平常怎么去学校<span class="tag">多选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q6" value="走路" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">走路</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="开车" data-p="1"><span class="box"></span><span class="opt-letter">B</span><span class="txt">开车</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="摇花手飞过去" data-p="3"><span class="box"></span><span class="opt-letter">C</span><span class="txt">摇花手飞过去</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="不知道" data-p="2"><span class="box"></span><span class="opt-letter">D</span><span class="txt">不知道</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="我是微生物不用上学" data-p="3"><span class="box"></span><span class="opt-letter">E</span><span class="txt">我是微生物不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="我是草履虫不用上学" data-p="4"><span class="box"></span><span class="opt-letter">F</span><span class="txt">我是草履虫不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="学校被炸了不用上学" data-p="5"><span class="box"></span><span class="opt-letter">G</span><span class="txt">学校被炸了不用上学</span></label>
+      <label class="opt"><input type="checkbox" name="q6" value="坐火箭" data-p="2"><span class="box"></span><span class="opt-letter">H</span><span class="txt">坐火箭</span></label>
+    </div>
+  </article>
+
+  <!-- ===== 三、假期与情绪 ===== -->
+  <div class="sec-head">
+    <h2>三、假期与情绪</h2>
+    <span class="cnt">第 07—10 题</span>
+  </div>
+  <p class="sec-lede">本部分了解你在课外的安排，以及遇到批评、压力时的应对方式。请选择最接近真实情况的一项或几项。</p>
+
+  <article class="q" data-q="q7" data-type="multi">
+    <h3 class="qt"><span class="qno">07</span>放假在家你会干什么<span class="tag">多选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q7" value="写作业" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">写作业</span></label>
+      <label class="opt"><input type="checkbox" name="q7" value="奖励自己" data-p="0"><span class="box"></span><span class="opt-letter">B</span><span class="txt">奖励自己</span></label>
+      <label class="opt"><input type="checkbox" name="q7" value="刷视频" data-p="1"><span class="box"></span><span class="opt-letter">C</span><span class="txt">刷视频</span></label>
+      <label class="opt"><input type="checkbox" name="q7" value="我是微生物不用放假" data-p="2"><span class="box"></span><span class="opt-letter">D</span><span class="txt">我是微生物不用放假</span></label>
+      <label class="opt"><input type="checkbox" name="q7" value="我是草履虫不用放假" data-p="3"><span class="box"></span><span class="opt-letter">E</span><span class="txt">我是草履虫不用放假</span></label>
+      <label class="opt"><input type="checkbox" name="q7" value="我是屎不用放假" data-p="4"><span class="box"></span><span class="opt-letter">F</span><span class="txt">我是屎不用放假</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q8" data-type="multi">
+    <h3 class="qt"><span class="qno">08</span>如果你被老师批评了，你会<span class="tag">多选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q8" value="将功补过" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">将功补过</span></label>
+      <label class="opt"><input type="checkbox" name="q8" value="bear" data-p="1"><span class="box"></span><span class="opt-letter">B</span><span class="txt">bear</span></label>
+      <label class="opt"><input type="checkbox" name="q8" value="吃掉老师" data-p="5"><span class="box"></span><span class="opt-letter">C</span><span class="txt">吃掉老师</span></label>
+      <label class="opt"><input type="checkbox" name="q8" value="跳起来给老师一巴掌" data-p="4"><span class="box"></span><span class="opt-letter">D</span><span class="txt">跳起来给老师一巴掌</span></label>
+      <label class="opt"><input type="checkbox" name="q8" value="炸学校解气" data-p="5"><span class="box"></span><span class="opt-letter">E</span><span class="txt">炸学校解气</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q9" data-type="single">
+    <h3 class="qt"><span class="qno">09</span>如果可以选择，你更愿意成为<span class="tag">单选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="q9" value="人类（保持现状就行）" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">人类（保持现状就行）</span></label>
+      <label class="opt"><input type="radio" name="q9" value="草履虫" data-p="2"><span class="box"></span><span class="opt-letter">B</span><span class="txt">草履虫</span></label>
+      <label class="opt"><input type="radio" name="q9" value="变形虫" data-p="3"><span class="box"></span><span class="opt-letter">C</span><span class="txt">变形虫</span></label>
+      <label class="opt"><input type="radio" name="q9" value="酵母菌" data-p="2"><span class="box"></span><span class="opt-letter">D</span><span class="txt">酵母菌</span></label>
+      <label class="opt"><input type="radio" name="q9" value="蓝细菌" data-p="2"><span class="box"></span><span class="opt-letter">E</span><span class="txt">蓝细菌</span></label>
+      <label class="opt"><input type="radio" name="q9" value="大肠杆菌" data-p="2"><span class="box"></span><span class="opt-letter">F</span><span class="txt">大肠杆菌</span></label>
+      <label class="opt"><input type="radio" name="q9" value="微生物（统称，具体种类不想说）" data-p="3"><span class="box"></span><span class="opt-letter">G</span><span class="txt">微生物（统称，具体种类不想说）</span></label>
+      <label class="opt"><input type="radio" name="q9" value="屎（我坚持认为我是）" data-p="5"><span class="box"></span><span class="opt-letter">H</span><span class="txt">屎（我坚持认为我是）</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q10" data-type="single">
+    <h3 class="qt"><span class="qno">10</span>你觉得自己现在的精神状态，最接近哪一层<span class="tag">单选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="q10" value="多细胞生物，结构完整" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">多细胞生物，结构完整</span></label>
+      <label class="opt"><input type="radio" name="q10" value="单细胞生物，能自己移动" data-p="1"><span class="box"></span><span class="opt-letter">B</span><span class="txt">单细胞生物，能自己移动</span></label>
+      <label class="opt"><input type="radio" name="q10" value="微生物级别，需要显微镜才能确认" data-p="2"><span class="box"></span><span class="opt-letter">C</span><span class="txt">微生物级别，需要显微镜才能确认</span></label>
+      <label class="opt"><input type="radio" name="q10" value="已经被分解，只剩基本元素" data-p="4"><span class="box"></span><span class="opt-letter">D</span><span class="txt">已经被分解，只剩基本元素</span></label>
+      <label class="opt"><input type="radio" name="q10" value="还在，但只剩一个名字" data-p="4"><span class="box"></span><span class="opt-letter">E</span><span class="txt">还在，但只剩一个名字</span></label>
+      <label class="opt"><input type="radio" name="q10" value="不确定自己算不算生物" data-p="3"><span class="box"></span><span class="opt-letter">F</span><span class="txt">不确定自己算不算生物</span></label>
+    </div>
+  </article>
+
+  <!-- ===== 四、评价与建议 ===== -->
+  <div class="sec-head">
+    <h2>四、评价与建议</h2>
+    <span class="cnt">第 11—12 题</span>
+  </div>
+  <p class="sec-lede">最后请你对学校与本次普查给出评价。第 12 题为选填，可不作答。</p>
+
+  <article class="q" data-q="q11" data-type="multi" data-max="2">
+    <h3 class="qt"><span class="qno">11</span>你对学校的评价和意见<span class="tag">双选</span></h3>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" name="q11" value="非常好" data-p="0"><span class="box"></span><span class="opt-letter">A</span><span class="txt">非常好</span></label>
+      <label class="opt"><input type="checkbox" name="q11" value="一般" data-p="1"><span class="box"></span><span class="opt-letter">B</span><span class="txt">一般</span></label>
+      <label class="opt"><input type="checkbox" name="q11" value="极差" data-p="2"><span class="box"></span><span class="opt-letter">C</span><span class="txt">极差</span></label>
+      <label class="opt"><input type="checkbox" name="q11" value="什么破烂学校" data-p="3"><span class="box"></span><span class="opt-letter">D</span><span class="txt">什么破烂学校</span></label>
+      <label class="opt"><input type="checkbox" name="q11" value="*****%%%/ctmdsbc*%%sg*%/％sb/#*%%%*" data-p="4"><span class="box"></span><span class="opt-letter">E</span><span class="txt">*****%%%/ctmdsbc*%%sg*%/％sb/#*%%%*</span></label>
+    </div>
+  </article>
+
+  <article class="q" data-q="q12" data-type="text">
+    <h3 class="qt"><span class="qno">12</span>你对此调查问卷的评价和建议</h3>
+    <label class="fill">
+      <input type="text" id="q12" maxlength="200" placeholder="最多可输入 200 字（仅创建者可见）">
+    </label>
+    <p class="hint">选填，可以留空。</p>
+  </article>
+
+  <div class="foot">
+    <b>说明：</b>本表由学生心理状况调研项目组编制，共 12 题，请如实填写，带 <span style="color:var(--red)">*</span> 为必答项。
+    调查结果仅用于整体情况分析，不会影响任何个人评价。如你近期情绪持续低落、影响睡眠或学习，可联系学校心理辅导老师，或拨打已开通的当地心理援助热线（如 12356）。
+  </div>
+</div>
+
+<!-- ===== 底部提交条 ===== -->
+<div class="bar">
+  <div class="bar-inner">
+    <div class="progress">
+      <div class="progress-top">
+        <span>已答 <span id="answered">0</span> / <span id="total">18</span> 题</span>
+        <span id="pct">0%</span>
+      </div>
+      <div class="track"><i id="barfill"></i></div>
+      <div class="warnline" id="warnline"></div>
+    </div>
+    <button class="btn" type="button" id="submit">提交答卷</button>
+  </div>
+</div>
+
+<!-- ===== 结果 ===== -->
+<section class="sheet result" id="result">
+  <div class="result-head">
+    <div class="seal">已阅</div>
+    <p class="result-kicker">学生心理状况普查 · 个人反馈单</p>
+    <h2 id="rTitle">常规样本 · 无需登记</h2>
+    <div class="result-id">
+      <span>档案编号 <b id="rId">XL-000000</b></span>
+      <span>处理状态：已归档</span>
+      <span>完成率 <b id="rDone">0%</b></span>
+    </div>
+  </div>
+
+  <div class="result-body">
+    <div class="diag">
+      <p class="label">系统判定</p>
+      <h3 id="rDiag">—</h3>
+      <p id="rDesc">—</p>
+    </div>
+
+    <div class="thunder">
+      <div class="thunder-top">
+        <span>综合指数（满分 99，仅供参考）</span>
+        <span><b id="rScore">0</b> / 99</span>
+      </div>
+      <div class="thunder-track"><i id="rBar"></i></div>
+    </div>
+
+    <div class="echo" id="rEcho" style="display:none">
+      <span class="k">你写下的那句话</span>
+      <span class="v" id="rEchoText"></span>
+    </div>
+
+    <div class="advice">
+      <span class="k">处置建议</span>
+      <span id="rAdvice">—</span>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn ghost" type="button" id="again">再填一次</button>
+      <button class="btn ghost" type="button" id="copy">复制这份档案</button>
+    </div>
+
+    <div class="foot" style="border-top:1px solid var(--line)">
+      以上结论由所选选项自动生成，不具备任何科学依据，也不构成任何评估结论。
+      如果你最近确实不太好过，可以找一个真实存在的人聊聊。
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  var required = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11'];
+  var totalEl = document.getElementById('total');
+  var answeredEl = document.getElementById('answered');
+  var pctEl = document.getElementById('pct');
+  var barfill = document.getElementById('barfill');
+  var warnline = document.getElementById('warnline');
+  var submitBtn = document.getElementById('submit');
+  var result = document.getElementById('result');
+
+  totalEl.textContent = String(required.length);
+
+  function isAnswered(key){
+    var list = document.querySelectorAll('input[name="' + key + '"]');
+    return Array.prototype.some.call(list, function(el){ return el.checked; });
+  }
+
+  function counted(){
+    return required.filter(function(k){ return isAnswered(k); }).length;
+  }
+
+  function updateProgress(){
+    var n = counted();
+    var pct = Math.round(n / required.length * 100);
+    answeredEl.textContent = String(n);
+    pctEl.textContent = pct + '%';
+    barfill.style.width = pct + '%';
+    if(n === required.length){ warnline.style.display = 'none'; }
+  }
+
+  document.addEventListener('change', function(e){
+    var t = e.target;
+    if(!t || (t.type !== 'radio' && t.type !== 'checkbox')){ return; }
+
+    var article = t.closest('.q');
+    var limit = article ? parseInt(article.getAttribute('data-max'), 10) : 0;
+    if(limit && t.checked){
+      var same = article.querySelectorAll('input[name="' + t.name + '"]:checked');
+      if(same.length > limit){
+        t.checked = false;
+        toast('本题最多选择 ' + limit + ' 项');
+      }
+    }
+
+    if(['q1','q2','q3'].indexOf(t.name) >= 0){
+      var box = document.getElementById(t.name + 'Other');
+      var input = document.getElementById(t.name + 'OtherText');
+      var chosen = document.querySelector('input[name="' + t.name + '"][data-other]:checked');
+      if(chosen && box && input){
+        box.hidden = false;
+        input.focus();
+      } else if(box && input){
+        box.hidden = true;
+        input.value = '';
+      }
+    }
+
+    updateProgress();
+    if(warnline.style.display === 'block'){ warnline.style.display = 'none'; }
+  });
+
+  /* 结果数据 */
+  var tiers = [
+    {max:0.15, title:'常规样本 · 无需登记', diag:'各项读数平稳，暂不列入名单', desc:'你的数据落在参考区间中央，系统已把你标记为“普通”。在本次普查里，这属于比较少见的情况。'},
+    {max:0.30, title:'二级样本 · 已录入名册', diag:'存在轻微波动，暂不处理', desc:'你的记录被放进了一个抽屉。抽屉里还有很多份，没有人说过以后会不会再打开它。'},
+    {max:0.45, title:'待定样本 · 已分配编号', diag:'数据不足以判定，需补充观察', desc:'系统给了你一个编号。从今天起，你在某些表格里不再是一个名字，只是一行记录。'},
+    {max:0.62, title:'三级关注对象 · 建议回访', diag:'多项指标偏离参考区间', desc:'你的答卷被单独打印出来，放在了桌角。没有人告诉你为什么是你，但确实是你。'},
+    {max:0.80, title:'异常读数 · 已触发复核', diag:'读数异常，需二次确认', desc:'系统提示：该样本的情绪曲线出现过多处断点。复核结果尚未返回，请在原地保持不动。'},
+    {max:9, title:'样本状态未知 · 请勿单独离开', diag:'无法完成判定，现已标记为“不明”', desc:'你的答卷在提交的瞬间让系统停顿了三秒。我们无法确认你是谁，只能确认你确实坐在这里。'}
+  ];
+
+  var advices = {
+    '常规样本 · 无需登记':'继续保持。记得把“我很好”说给愿意听的人，而不是只说给表格听。',
+    '二级样本 · 已录入名册':'今晚早点睡，把手机放到够不着的地方。抽屉里那份记录，明天再看。',
+    '待定样本 · 已分配编号':'给自己找一个能说话的人。被写进表格不可怕，被写进去还一直没人问，才是麻烦。',
+    '三级关注对象 · 建议回访':'挑一个人，把“我其实有点累”说出口，只说这一句就够了。',
+    '异常读数 · 已触发复核':'今天别硬撑了。请假、睡够、吃点热的，告诉一个成年人你的真实状态。',
+    '样本状态未知 · 请勿单独离开':'现在最该做的不是坚持，是停下来。找一个真实存在的人陪你说说话，必要时拨打当地心理援助热线。'
+  };
+
+  function scoreOf(){
+    var total = 0, count = 0;
+    required.forEach(function(key){
+      var list = document.querySelectorAll('input[name="' + key + '"]');
+      var maxp = 0, sel = 0, picked = 0;
+      Array.prototype.forEach.call(list, function(el){
+        var p = parseInt(el.getAttribute('data-p'), 10) || 0;
+        if(p > maxp) maxp = p;
+        if(el.checked){ picked++; sel += p; }
+      });
+      if(picked > 0){
+        count++;
+        if(maxp > 0) total += Math.min(1, (sel / picked) / maxp);
+      }
+    });
+    return count ? total / count : 0;
+  }
+
+  function pickTier(score){
+    for(var i = 0; i < tiers.length; i++){
+      if(score < tiers[i].max) return tiers[i];
+    }
+    return tiers[tiers.length - 1];
+  }
+
+  function randId(){
+    var s = 'XL-';
+    for(var i = 0; i < 6; i++){ s += Math.floor(Math.random() * 10); }
+    return s;
+  }
+
+  function commentText(){
+    return (document.getElementById('q12').value || '').trim();
+  }
+
+  function showResult(){
+    var score = scoreOf();
+    var tier = pickTier(score);
+    var thunder = Math.max(8, Math.min(99, Math.round(score * 100 + Math.random() * 6)));
+
+    document.getElementById('rTitle').textContent = tier.title;
+    document.getElementById('rDiag').textContent = tier.diag;
+    document.getElementById('rDesc').textContent = tier.desc;
+    document.getElementById('rScore').textContent = String(thunder);
+    document.getElementById('rId').textContent = randId();
+    document.getElementById('rDone').textContent = Math.round(counted() / required.length * 100) + '%';
+    document.getElementById('rAdvice').textContent = advices[tier.title] || '保持呼吸，按时吃饭。';
+
+    var echoText = commentText();
+    var echoBox = document.getElementById('rEcho');
+    if(echoText){
+      document.getElementById('rEchoText').textContent = '“' + echoText + '”';
+      echoBox.style.display = 'block';
+    } else {
+      echoBox.style.display = 'none';
+    }
+
+    document.querySelector('.sheet').style.display = 'none';
+    document.querySelector('.bar').style.display = 'none';
+    result.classList.add('show');
+    document.body.style.background = '#E7E2D5';
+    var bar = document.getElementById('rBar');
+    bar.style.width = '0%';
+    window.setTimeout(function(){ bar.style.width = thunder + '%'; }, 120);
+    window.scrollTo({top:0, behavior:'smooth'});
+    rCopyPayload = buildCopyText(tier, thunder);
+  }
+
+  var rCopyPayload = '';
+
+  function buildCopyText(tier, thunder){
+    var lines = [];
+    lines.push('中小学生心理健康状况普查 · 个人反馈单');
+    lines.push('编号：' + document.getElementById('rId').textContent);
+    lines.push('判定：' + tier.title);
+    lines.push('结论：' + tier.diag);
+    lines.push('综合指数：' + thunder + ' / 99');
+    lines.push('完成率：' + Math.round(counted() / required.length * 100) + '%');
+    var e = commentText();
+    if(e){ lines.push('你写下的：' + e); }
+    lines.push('建议：' + (advices[tier.title] || ''));
+    lines.push('（本反馈由选项自动生成，不作为任何评估依据）');
+    return lines.join('\n');
+  }
+
+  /* 提交：必须答完全部必答项 */
+  submitBtn.addEventListener('click', function(){
+    var n = counted();
+    if(n < required.length){
+      var first = null;
+      for(var i = 0; i < required.length; i++){
+        if(!isAnswered(required[i])){ first = required[i]; break; }
+      }
+      warnline.style.display = 'block';
+      warnline.textContent = '第 ' + String(required.indexOf(first) + 1).replace(/^(\d)$/, '0$1') + ' 题尚未作答，请完成全部必答项后再提交。';
+      var target = document.querySelector('.q[data-q="' + first + '"]');
+      if(target){
+        target.scrollIntoView({behavior:'smooth', block:'center'});
+        target.classList.remove('flash');
+        void target.offsetWidth;
+        target.classList.add('flash');
+        window.setTimeout(function(){ target.classList.remove('flash'); }, 1800);
+      }
+      return;
+    }
+    warnline.style.display = 'none';
+    showResult();
+  });
+
+  /* 再填一次 */
+  document.getElementById('again').addEventListener('click', function(){
+    var list = document.querySelectorAll('.q input');
+    Array.prototype.forEach.call(list, function(el){
+      if(el.type === 'radio' || el.type === 'checkbox'){ el.checked = false; }
+    });
+    document.getElementById('q12').value = '';
+    ['q1','q2','q3'].forEach(function(k){
+      var box = document.getElementById(k + 'Other');
+      var input = document.getElementById(k + 'OtherText');
+      if(box && input){ box.hidden = true; input.value = ''; }
+    });
+    result.classList.remove('show');
+    document.querySelector('.sheet').style.display = '';
+    document.querySelector('.bar').style.display = '';
+    updateProgress();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 复制 */
+  document.getElementById('copy').addEventListener('click', function(){
+    var text = rCopyPayload;
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch(err){ ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? '已复制到剪贴板' : '复制失败，请手动选中结果文字');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ toast('已复制到剪贴板'); }, fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function(){ toastEl.classList.remove('on'); }, 2200);
+  }
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>
